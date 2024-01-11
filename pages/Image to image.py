@@ -9,8 +9,10 @@ st.title("DreamBooth Image-to-Image App")
 st.markdown("This app allows you to transform images using the DreamBooth model.")
 
 # Load the DreamBooth model
-pipe = AutoPipelineForImage2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16")
-pipe.to("cuda")
+pipe = AutoPipelineForImage2Image.from_pretrained("stabilityai/sdxl-turbo")
+# pipe = AutoPipelineForImage2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16")
+pipe.to("cpu")
+# pipe.to("cuda")
 
 # Define the function to generate images
 def generate_image(init_image, prompt, num_inference_steps, strength, guidance_scale):

@@ -37,7 +37,8 @@ if uploaded_image:
 
 # Allow the user to input a prompt
 st.sidebar.header("Prompt")
-prompt = st.sidebar.text_input("Enter a prompt")
+prompt = st.text_input("Enter a prompt")
+# prompt = st.sidebar.text_input("Enter a prompt")
 
 # Set the default values for the other parameters
 num_inference_steps = st.sidebar.slider("Number of Inference Steps", 1, 10, 2)

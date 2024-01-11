@@ -25,11 +25,11 @@ def main():
         # Display the generated image with style
         st.image(image, caption="Generated Image 🖼️", use_column_width=True, output_format="JPEG")
 
-        # Add a button to download the image
+        # # Add a button to download the image
 
-        buf = io.BytesIO()
-        image.save(buf, format="JPEG")
-        btn = st.download_button(label="📥 Download Image",data=buf,file_name="generated_image.jpg",mime="image/jpeg")
+        # buf = io.BytesIO()
+        # image.save(buf, format="JPEG")
+        # btn = st.download_button(label="📥 Download Image",data=buf,file_name="generated_image.jpg",mime="image/jpeg")
 
 if __name__ == "__main__":
     main()

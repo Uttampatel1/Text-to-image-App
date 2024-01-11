@@ -4,9 +4,9 @@ from diffusers.utils import load_image
 import torch
 import os
 
-st.title("DreamBooth Image-to-Image App")
+st.title("DreamBooth Image-to-Image App 💭🌈")
 
-st.markdown("This app allows you to transform images using the DreamBooth model.")
+# st.markdown("This app allows you to transform images using the DreamBooth model. ✨")
 
 # Load the DreamBooth model
 pipe = AutoPipelineForImage2Image.from_pretrained("stabilityai/sdxl-turbo")
@@ -29,23 +29,29 @@ def save_uploaded_image(uploaded_image):
     return file_name
 
 # Allow the user to upload an image
-st.header("Select an image to transform:")
-uploaded_image = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+st.sidebar.header("Options")
+uploaded_image = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
 if uploaded_image:
-    st.image(uploaded_image ,caption="Upload image")
+    st.sidebar.image(uploaded_image, caption="Uploaded image", use_column_width=True)
 
 # Allow the user to input a prompt
-st.header("Enter a prompt:")
-prompt = st.text_input("Prompt")
+st.sidebar.header("Prompt")
+prompt = st.sidebar.text_input("Enter a prompt")
 
 # Set the default values for the other parameters
-num_inference_steps = 2
-strength = 0.5
-guidance_scale = 0.0
+num_inference_steps = st.sidebar.slider("Number of Inference Steps", 1, 10, 2)
+strength = st.sidebar.slider("Strength", 0.0, 1.0, 0.5)
+guidance_scale = st.sidebar.slider("Guidance Scale", 0.0, 1.0, 0.0)
+
+# Set default values
+if not st.sidebar.button("Reset to Default"):
+    num_inference_steps = 2
+    strength = 0.5
+    guidance_scale = 0.0
 
 # Generate the image
-if uploaded_image is not None and prompt is not "":
+if uploaded_image is not None and prompt:
     # Save the uploaded image to a temporary directory
     image_path = save_uploaded_image(uploaded_image)
 
@@ -62,8 +68,8 @@ if uploaded_image is not None and prompt is not "":
     image = image.resize(init_image.size)
 
     # Display the generated image
-    st.image(image, caption="Generated image")
-        
+    st.image(image, caption="Generated image", use_column_width=True)
+
         
 # # Add a slider to control the strength of the transformation
 # st.header("Strength:")

@@ -33,7 +33,7 @@ st.sidebar.header("Options")
 uploaded_image = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
 
 if uploaded_image:
-    st.sidebar.image(uploaded_image, caption="Uploaded image", use_column_width=True)
+    st.image(uploaded_image, caption="Uploaded image", use_column_width=True)
 
 # Allow the user to input a prompt
 st.sidebar.header("Prompt")

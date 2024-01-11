@@ -9,7 +9,7 @@ pipe.to("cpu")
 
 # Streamlit app
 def main():
-    st.title("🌈 Text to Image Generation App 🎨")
+    st.title("🌈Text to Image Generation🎨")
 
     # User input for the prompt
     prompt = st.text_area("✏️ Enter a prompt:", "A cinematic shot of a baby raccoon wearing an intricate Italian priest robe.")

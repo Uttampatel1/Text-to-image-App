@@ -9,29 +9,23 @@ pipe.to("cpu")
 
 # Streamlit app
 def main():
-    st.title("Text to Image Generation App")
+    st.title("🌈 Text to Image Generation App 🎨")
 
     # User input for the prompt
-    prompt = st.text_area("Enter a prompt:", "A cinematic shot of a baby raccoon wearing an intricate Italian priest robe.")
+    prompt = st.text_area("✏️ Enter a prompt:", "A cinematic shot of a baby raccoon wearing an intricate Italian priest robe.")
 
     # Generate image on button click
-    if st.button("Generate Image"):
-        # Show a progress bar while generating the image
-        progress_bar = st.progress(0)
-        for percent_complete in range(100):
-            progress_bar.progress(percent_complete + 1)
-        
-        # Perform inference with the provided prompt
-        image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.0).images[0]
-
-        # Hide the progress bar after generating the image
-        progress_bar.empty()
+    if st.button("Generate Image 🚀"):
+        # Show a spinner while generating the image
+        with st.spinner("Generating Image..."):
+            # Perform inference with the provided prompt
+            image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.0).images[0]
 
         # Display the generated image with style
-        st.image(image, caption="Generated Image", use_column_width=True, output_format="JPEG")
+        st.image(image, caption="Generated Image 🖼️", use_column_width=True, output_format="JPEG")
 
         # Add a download button for the generated image
-        download_btn = st.button("Download Image")
+        download_btn = st.button("Download Image 💾")
         if download_btn:
             # Convert the PIL Image to bytes
             image_bytes = Image.fromarray(image.numpy())

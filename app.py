@@ -20,7 +20,7 @@ def main():
         # Show a spinner while generating the image
         with st.spinner("Generating Image..."):
             # Perform inference with the provided prompt
-            image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.0).images[0]
+            image = pipe(prompt=prompt, num_inference_steps=1, guidance_scale=0.2).images[0]
 
         # Display the generated image with style
         st.image(image, caption="Generated Image 🖼️", use_column_width=True, output_format="JPEG")

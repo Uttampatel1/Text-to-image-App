@@ -32,8 +32,8 @@ This is a simple application that converts text to images and performs image-to-
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/text-to-image-app.git
-   cd text-to-image-app
+   git clone https://github.com/Uttampatel1/text-to-image.git
+   cd text-to-image
    ```
 
 2. **Run the app:**

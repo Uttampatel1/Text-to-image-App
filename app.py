@@ -27,15 +27,9 @@ def main():
 
         # Add a button to download the image
 
-       buf = io.BytesIO()
-       image.save(buf, format="JPEG")
-       btn = st.download_button(
-           label="📥 Download Image",
-           data=buf,
-           file_name="generated_image.jpg",
-           mime="image/jpeg",
-       )
-
+        buf = io.BytesIO()
+        image.save(buf, format="JPEG")
+        btn = st.download_button(label="📥 Download Image",data=buf,file_name="generated_image.jpg",mime="image/jpeg")
 
 if __name__ == "__main__":
     main()

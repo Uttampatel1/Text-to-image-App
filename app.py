@@ -3,7 +3,8 @@ from diffusers import AutoPipelineForText2Image
 import torch
 
 # Load the pre-trained model and set it up
-pipe = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float32, variant="fp32")
+pipe = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=torch.float16, variant="fp16")
+pipe.to("cpu")
 
 # Streamlit app
 def main():

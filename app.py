@@ -24,24 +24,17 @@ def main():
         # Display the generated image with style
         st.image(image, caption="Generated Image 🖼️", use_column_width=True, output_format="JPEG")
 
-        # Add a download button for the generated image
-        download_btn = st.button("Download Image 💾")
-        if download_btn:
-            # Convert the PIL Image to bytes
-            image_bytes = Image.fromarray(image.numpy())
-            
-            # Offer the image for download
-            st.download_button(
-                label="Download Image",
-                key="download_image",
-                on_click=lambda: save_image(image_bytes),
-                help="Download the generated image.",
-            )
+        # Add a button to download the image
 
-def save_image(image_bytes):
-    # Save the image to the user's local machine
-    with open("generated_image.jpg", "wb") as f:
-        f.write(image_bytes.tobytes())
+       buf = io.BytesIO()
+       image.save(buf, format="JPEG")
+       btn = st.download_button(
+           label="📥 Download Image",
+           data=buf,
+           file_name="generated_image.jpg",
+           mime="image/jpeg",
+       )
+
 
 if __name__ == "__main__":
     main()

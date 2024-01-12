@@ -32,7 +32,7 @@ This is a simple application that converts text to images and performs image-to-
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Uttampatel1/text-to-image.git
+   git clone https://github.com/Uttampatel1/Text-to-image-App.git
    cd text-to-image
    ```
 
